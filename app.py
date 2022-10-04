@@ -7,22 +7,29 @@ app = Flask(__name__)
 @app.get('/api/books')
 def books_author_title():
     result = conn_exe_close('call books_author_title()',[])
-    result_json = json.dumps(result,default=str)
-    return result_json
+    if(type(result) == list):
+        result_json = json.dumps(result,default=str)
+        return result_json
+    else:
+        return 'Error'
 
 @app.get('/api/books_authored')
 def count_books_author():
     result = conn_exe_close('call count_books_author()',[])
-    result_json = json.dumps(result,default=str)
-    return result_json
-
+    if(type(result) == list):
+        result_json = json.dumps(result,default=str)
+        return result_json
+    else:
+        return 'Error'
 
 @app.get('/api/best_selling_book')
 def most_sold_book():
     result = conn_exe_close('call most_sold_book()',[])
-    result_json = json.dumps(result,default=str)
-    return result_json
-
+    if(type(result) == list):
+        result_json = json.dumps(result,default=str)
+        return result_json
+    else:
+        return 'Error'
 
 @app.get('/api/best_selling_author')
 def order_authors_sale():
