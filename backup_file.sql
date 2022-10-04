@@ -150,7 +150,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `order_authors_sale`()
 BEGIN
 	select a.name,sum(b.copies_sold)
 	from book b inner join author a on a.id = b.author_id 
-	group by a.id;
+	group by a.id
+	order by sum(b.copies_sold) desc;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -167,4 +168,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-04 17:09:44
+-- Dump completed on 2022-10-04 17:37:18
